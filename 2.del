@@ -1,0 +1,14 @@
+#!/bin/bash
+
+artifacts=$(cat ./onshape/.openapi-generator-ignore | grep "^[^#]")
+if ! [ -z "$artifacts" ]; then
+    artifactOutput='-name .openapi-generator-ignore'
+    while IFS= read -r line; do
+        if ! [ -z "$line" ]; then
+        artifactOutput="${artifactOutput}"' -o -name '"${line}"
+        fi
+    done <<< "${artifacts}"
+    cd ./onshape
+    find . -type f ! \( ${artifactOutput} \) -delete
+    cd ./..
+fi

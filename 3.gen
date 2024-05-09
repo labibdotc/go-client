@@ -1,0 +1,31 @@
+#!/bin/bash
+
+
+if [ -z "$repo" ]; then
+    repo=$PWD
+fi
+
+if [ -z "$packageVersion" ]; then
+    packageVersion=0.0.0
+fi
+
+java -cp ${repo}/go-oapi-codegen.jar:${repo}/openapi-generator-cli.jar org.openapitools.codegen.OpenAPIGenerator generate -i ${repo}/openapi.json.tmp -g go-oapi-codegen -o ${repo}/onshape --type-mappings DateTime=JSONTime --additional-properties=packageVersion=${packageVersion} --additional-properties=useOneOfDiscriminatorLookup=true --api-name-suffix=Api --global-property apiTests=false  -c ${repo}/openapi_config.json
+
+
+# TODO: delete
+# openapi-generator-cli generate -i ${repo}/openapi.json.tmp -g go -o ${repo}/onshape --type-mappings DateTime=JSONTime --additional-properties=packageVersion=${packageVersion} --additional-properties=useOneOfDiscriminatorLookup=true --api-name-suffix=Api --global-property apiTests=false  -c ${repo}/openapi_config.json
+
+# TODO: delete
+
+
+go fmt ${repo}/onshape
+
+# TODO: uncomment
+# rm openapi.json.tmp
+# rm $repo/openapi-generator-cli.jar
+# git add --all
+if [[ `git status --porcelain` ]]; then
+    echo 'Changes occured; creating pull request.'
+else
+    echo 'No new changes; bindings are the same.'
+fi

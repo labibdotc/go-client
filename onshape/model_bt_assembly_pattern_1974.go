@@ -50,6 +50,8 @@ type BTAssemblyPattern1974 struct {
 	FeatureId              *string                        `json:"featureId,omitempty"`
 	InstanceControlNodes   []BTInstanceControlNode750     `json:"instanceControlNodes,omitempty"`
 	PatternFeature         *BTMAssemblyPatternFeature2241 `json:"patternFeature,omitempty"`
+	// Type of JSON object.
+	BtType *string `json:"btType,omitempty"`
 }
 
 // NewBTAssemblyPattern1974 instantiates a new BTAssemblyPattern1974 object
