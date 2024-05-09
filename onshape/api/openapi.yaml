@@ -37771,8 +37771,7 @@ components:
           format: int32
           type: integer
         lines:
-          type: object
-          x-is-free-form: false
+          $ref: '#/components/schemas/Lines'
         model:
           $ref: '#/components/schemas/BTMModel-141'
         module:

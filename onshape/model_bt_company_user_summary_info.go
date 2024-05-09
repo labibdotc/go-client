@@ -11,9 +11,7 @@ Contact: api-support@onshape.zendesk.com
 package onshape
 
 import (
-	"bytes"
 	"encoding/json"
-	"fmt"
 )
 
 // BTCompanyUserSummaryInfo struct for BTCompanyUserSummaryInfo
