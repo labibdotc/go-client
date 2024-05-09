@@ -16,6 +16,7 @@ import (
 
 // BTMSketchCurveSegment155 struct for BTMSketchCurveSegment155
 type BTMSketchCurveSegment155 struct {
+	BTMSketchCurve4
 	BtType                              *string  `json:"btType,omitempty"`
 	ControlBoxIds                       []string `json:"controlBoxIds,omitempty"`
 	EntityId                            *string  `json:"entityId,omitempty"`
@@ -37,6 +38,8 @@ type BTMSketchCurveSegment155 struct {
 	OffsetCurveExtensions      []float64           `json:"offsetCurveExtensions,omitempty"`
 	StartParam                 *float64            `json:"startParam,omitempty"`
 	StartPointId               *string             `json:"startPointId,omitempty"`
+	// Type of JSON object.
+	BtType *string `json:"btType,omitempty"`
 }
 
 // NewBTMSketchCurveSegment155 instantiates a new BTMSketchCurveSegment155 object
@@ -696,8 +699,48 @@ func (o *BTMSketchCurveSegment155) SetStartPointId(v string) {
 	o.StartPointId = &v
 }
 
+// GetBtType returns the BtType field value if set, zero value otherwise.
+func (o *BTMSketchCurveSegment155) GetBtType() string {
+	if o == nil || o.BtType == nil {
+		var ret string
+		return ret
+	}
+	return *o.BtType
+}
+
+// GetBtTypeOk returns a tuple with the BtType field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *BTMSketchCurveSegment155) GetBtTypeOk() (*string, bool) {
+	if o == nil || o.BtType == nil {
+		return nil, false
+	}
+	return o.BtType, true
+}
+
+// HasBtType returns a boolean if a field has been set.
+func (o *BTMSketchCurveSegment155) HasBtType() bool {
+	if o != nil && o.BtType != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetBtType gets a reference to the given string and assigns it to the BtType field.
+func (o *BTMSketchCurveSegment155) SetBtType(v string) {
+	o.BtType = &v
+}
+
 func (o BTMSketchCurveSegment155) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
+	serializedBTMSketchCurve4, errBTMSketchCurve4 := json.Marshal(o.BTMSketchCurve4)
+	if errBTMSketchCurve4 != nil {
+		return []byte{}, errBTMSketchCurve4
+	}
+	errBTMSketchCurve4 = json.Unmarshal([]byte(serializedBTMSketchCurve4), &toSerialize)
+	if errBTMSketchCurve4 != nil {
+		return []byte{}, errBTMSketchCurve4
+	}
 	if o.BtType != nil {
 		toSerialize["btType"] = o.BtType
 	}
@@ -757,6 +800,9 @@ func (o BTMSketchCurveSegment155) MarshalJSON() ([]byte, error) {
 	}
 	if o.StartPointId != nil {
 		toSerialize["startPointId"] = o.StartPointId
+	}
+	if o.BtType != nil {
+		toSerialize["btType"] = o.BtType
 	}
 	return json.Marshal(toSerialize)
 }

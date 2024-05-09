@@ -16,6 +16,7 @@ import (
 
 // BTMParameterReferencePartStudio3302 struct for BTMParameterReferencePartStudio3302
 type BTMParameterReferencePartStudio3302 struct {
+	BTMParameterReferenceWithConfiguration3028
 	BtType             *string                            `json:"btType,omitempty"`
 	Configuration      []BTMParameter1                    `json:"configuration,omitempty"`
 	DocumentId         *string                            `json:"documentId,omitempty"`
@@ -36,6 +37,8 @@ type BTMParameterReferencePartStudio3302 struct {
 	PartIdentity                *BTPSOIdentity2741        `json:"partIdentity,omitempty"`
 	PartQuery                   *BTMParameterQueryList148 `json:"partQuery,omitempty"`
 	StandardContentParametersId *string                   `json:"standardContentParametersId,omitempty"`
+	// Type of JSON object.
+	BtType *string `json:"btType,omitempty"`
 }
 
 // NewBTMParameterReferencePartStudio3302 instantiates a new BTMParameterReferencePartStudio3302 object
@@ -599,8 +602,48 @@ func (o *BTMParameterReferencePartStudio3302) SetStandardContentParametersId(v s
 	o.StandardContentParametersId = &v
 }
 
+// GetBtType returns the BtType field value if set, zero value otherwise.
+func (o *BTMParameterReferencePartStudio3302) GetBtType() string {
+	if o == nil || o.BtType == nil {
+		var ret string
+		return ret
+	}
+	return *o.BtType
+}
+
+// GetBtTypeOk returns a tuple with the BtType field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *BTMParameterReferencePartStudio3302) GetBtTypeOk() (*string, bool) {
+	if o == nil || o.BtType == nil {
+		return nil, false
+	}
+	return o.BtType, true
+}
+
+// HasBtType returns a boolean if a field has been set.
+func (o *BTMParameterReferencePartStudio3302) HasBtType() bool {
+	if o != nil && o.BtType != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetBtType gets a reference to the given string and assigns it to the BtType field.
+func (o *BTMParameterReferencePartStudio3302) SetBtType(v string) {
+	o.BtType = &v
+}
+
 func (o BTMParameterReferencePartStudio3302) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
+	serializedBTMParameterReferenceWithConfiguration3028, errBTMParameterReferenceWithConfiguration3028 := json.Marshal(o.BTMParameterReferenceWithConfiguration3028)
+	if errBTMParameterReferenceWithConfiguration3028 != nil {
+		return []byte{}, errBTMParameterReferenceWithConfiguration3028
+	}
+	errBTMParameterReferenceWithConfiguration3028 = json.Unmarshal([]byte(serializedBTMParameterReferenceWithConfiguration3028), &toSerialize)
+	if errBTMParameterReferenceWithConfiguration3028 != nil {
+		return []byte{}, errBTMParameterReferenceWithConfiguration3028
+	}
 	if o.BtType != nil {
 		toSerialize["btType"] = o.BtType
 	}
@@ -651,6 +694,9 @@ func (o BTMParameterReferencePartStudio3302) MarshalJSON() ([]byte, error) {
 	}
 	if o.StandardContentParametersId != nil {
 		toSerialize["standardContentParametersId"] = o.StandardContentParametersId
+	}
+	if o.BtType != nil {
+		toSerialize["btType"] = o.BtType
 	}
 	return json.Marshal(toSerialize)
 }

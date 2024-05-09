@@ -16,6 +16,7 @@ import (
 
 // BTCurveLengthDimensionDisplayData322 struct for BTCurveLengthDimensionDisplayData322
 type BTCurveLengthDimensionDisplayData322 struct {
+	BTDimensionDisplayData323
 	BtType               *string         `json:"btType,omitempty"`
 	CoordinateSystem     *BTMatrix3x3340 `json:"coordinateSystem,omitempty"`
 	FeatureId            *string         `json:"featureId,omitempty"`
@@ -32,6 +33,8 @@ type BTCurveLengthDimensionDisplayData322 struct {
 	Value                *float64        `json:"value,omitempty"`
 	PositionX            *float64        `json:"positionX,omitempty"`
 	PositionY            *float64        `json:"positionY,omitempty"`
+	// Type of JSON object.
+	BtType *string `json:"btType,omitempty"`
 }
 
 // NewBTCurveLengthDimensionDisplayData322 instantiates a new BTCurveLengthDimensionDisplayData322 object
@@ -563,8 +566,48 @@ func (o *BTCurveLengthDimensionDisplayData322) SetPositionY(v float64) {
 	o.PositionY = &v
 }
 
+// GetBtType returns the BtType field value if set, zero value otherwise.
+func (o *BTCurveLengthDimensionDisplayData322) GetBtType() string {
+	if o == nil || o.BtType == nil {
+		var ret string
+		return ret
+	}
+	return *o.BtType
+}
+
+// GetBtTypeOk returns a tuple with the BtType field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *BTCurveLengthDimensionDisplayData322) GetBtTypeOk() (*string, bool) {
+	if o == nil || o.BtType == nil {
+		return nil, false
+	}
+	return o.BtType, true
+}
+
+// HasBtType returns a boolean if a field has been set.
+func (o *BTCurveLengthDimensionDisplayData322) HasBtType() bool {
+	if o != nil && o.BtType != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetBtType gets a reference to the given string and assigns it to the BtType field.
+func (o *BTCurveLengthDimensionDisplayData322) SetBtType(v string) {
+	o.BtType = &v
+}
+
 func (o BTCurveLengthDimensionDisplayData322) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
+	serializedBTDimensionDisplayData323, errBTDimensionDisplayData323 := json.Marshal(o.BTDimensionDisplayData323)
+	if errBTDimensionDisplayData323 != nil {
+		return []byte{}, errBTDimensionDisplayData323
+	}
+	errBTDimensionDisplayData323 = json.Unmarshal([]byte(serializedBTDimensionDisplayData323), &toSerialize)
+	if errBTDimensionDisplayData323 != nil {
+		return []byte{}, errBTDimensionDisplayData323
+	}
 	if o.BtType != nil {
 		toSerialize["btType"] = o.BtType
 	}
@@ -612,6 +655,9 @@ func (o BTCurveLengthDimensionDisplayData322) MarshalJSON() ([]byte, error) {
 	}
 	if o.PositionY != nil {
 		toSerialize["positionY"] = o.PositionY
+	}
+	if o.BtType != nil {
+		toSerialize["btType"] = o.BtType
 	}
 	return json.Marshal(toSerialize)
 }

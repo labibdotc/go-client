@@ -16,6 +16,7 @@ import (
 
 // BTPStatementTry1523 struct for BTPStatementTry1523
 type BTPStatementTry1523 struct {
+	BTPStatement269
 	Annotation          *BTPAnnotation231     `json:"annotation,omitempty"`
 	Atomic              *bool                 `json:"atomic,omitempty"`
 	BtType              *string               `json:"btType,omitempty"`
@@ -36,6 +37,8 @@ type BTPStatementTry1523 struct {
 	SpaceBeforeSilent   *BTPSpace10           `json:"spaceBeforeSilent,omitempty"`
 	StandardType        *GBTPType             `json:"standardType,omitempty"`
 	TypeName            *string               `json:"typeName,omitempty"`
+	// Type of JSON object.
+	BtType *string `json:"btType,omitempty"`
 }
 
 // NewBTPStatementTry1523 instantiates a new BTPStatementTry1523 object
@@ -695,8 +698,48 @@ func (o *BTPStatementTry1523) SetTypeName(v string) {
 	o.TypeName = &v
 }
 
+// GetBtType returns the BtType field value if set, zero value otherwise.
+func (o *BTPStatementTry1523) GetBtType() string {
+	if o == nil || o.BtType == nil {
+		var ret string
+		return ret
+	}
+	return *o.BtType
+}
+
+// GetBtTypeOk returns a tuple with the BtType field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *BTPStatementTry1523) GetBtTypeOk() (*string, bool) {
+	if o == nil || o.BtType == nil {
+		return nil, false
+	}
+	return o.BtType, true
+}
+
+// HasBtType returns a boolean if a field has been set.
+func (o *BTPStatementTry1523) HasBtType() bool {
+	if o != nil && o.BtType != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetBtType gets a reference to the given string and assigns it to the BtType field.
+func (o *BTPStatementTry1523) SetBtType(v string) {
+	o.BtType = &v
+}
+
 func (o BTPStatementTry1523) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
+	serializedBTPStatement269, errBTPStatement269 := json.Marshal(o.BTPStatement269)
+	if errBTPStatement269 != nil {
+		return []byte{}, errBTPStatement269
+	}
+	errBTPStatement269 = json.Unmarshal([]byte(serializedBTPStatement269), &toSerialize)
+	if errBTPStatement269 != nil {
+		return []byte{}, errBTPStatement269
+	}
 	if o.Annotation != nil {
 		toSerialize["annotation"] = o.Annotation
 	}
@@ -756,6 +799,9 @@ func (o BTPStatementTry1523) MarshalJSON() ([]byte, error) {
 	}
 	if o.TypeName != nil {
 		toSerialize["typeName"] = o.TypeName
+	}
+	if o.BtType != nil {
+		toSerialize["btType"] = o.BtType
 	}
 	return json.Marshal(toSerialize)
 }

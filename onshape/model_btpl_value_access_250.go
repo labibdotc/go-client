@@ -16,6 +16,7 @@ import (
 
 // BTPLValueAccess250 struct for BTPLValueAccess250
 type BTPLValueAccess250 struct {
+	BTPLValue249
 	Atomic              *bool                  `json:"atomic,omitempty"`
 	BtType              *string                `json:"btType,omitempty"`
 	DocumentationType   *GBTPDefinitionType    `json:"documentationType,omitempty"`
@@ -28,6 +29,8 @@ type BTPLValueAccess250 struct {
 	StartSourceLocation *int32                 `json:"startSourceLocation,omitempty"`
 	Accessor            *BTPPropertyAccessor23 `json:"accessor,omitempty"`
 	Base                *BTPLValue249          `json:"base,omitempty"`
+	// Type of JSON object.
+	BtType *string `json:"btType,omitempty"`
 }
 
 // NewBTPLValueAccess250 instantiates a new BTPLValueAccess250 object
@@ -431,8 +434,48 @@ func (o *BTPLValueAccess250) SetBase(v BTPLValue249) {
 	o.Base = &v
 }
 
+// GetBtType returns the BtType field value if set, zero value otherwise.
+func (o *BTPLValueAccess250) GetBtType() string {
+	if o == nil || o.BtType == nil {
+		var ret string
+		return ret
+	}
+	return *o.BtType
+}
+
+// GetBtTypeOk returns a tuple with the BtType field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *BTPLValueAccess250) GetBtTypeOk() (*string, bool) {
+	if o == nil || o.BtType == nil {
+		return nil, false
+	}
+	return o.BtType, true
+}
+
+// HasBtType returns a boolean if a field has been set.
+func (o *BTPLValueAccess250) HasBtType() bool {
+	if o != nil && o.BtType != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetBtType gets a reference to the given string and assigns it to the BtType field.
+func (o *BTPLValueAccess250) SetBtType(v string) {
+	o.BtType = &v
+}
+
 func (o BTPLValueAccess250) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
+	serializedBTPLValue249, errBTPLValue249 := json.Marshal(o.BTPLValue249)
+	if errBTPLValue249 != nil {
+		return []byte{}, errBTPLValue249
+	}
+	errBTPLValue249 = json.Unmarshal([]byte(serializedBTPLValue249), &toSerialize)
+	if errBTPLValue249 != nil {
+		return []byte{}, errBTPLValue249
+	}
 	if o.Atomic != nil {
 		toSerialize["atomic"] = o.Atomic
 	}
@@ -468,6 +511,9 @@ func (o BTPLValueAccess250) MarshalJSON() ([]byte, error) {
 	}
 	if o.Base != nil {
 		toSerialize["base"] = o.Base
+	}
+	if o.BtType != nil {
+		toSerialize["btType"] = o.BtType
 	}
 	return json.Marshal(toSerialize)
 }

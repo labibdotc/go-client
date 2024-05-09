@@ -16,6 +16,7 @@ import (
 
 // BTMConfigurationParameterEnum105 struct for BTMConfigurationParameterEnum105
 type BTMConfigurationParameterEnum105 struct {
+	BTMConfigurationParameter819
 	BtType               *string       `json:"btType,omitempty"`
 	GeneratedParameterId *BTTreeNode20 `json:"generatedParameterId,omitempty"`
 	// Microversion that resulted from the import.
@@ -31,6 +32,8 @@ type BTMConfigurationParameterEnum105 struct {
 	Namespace          *string                        `json:"namespace,omitempty"`
 	OptionIds          []string                       `json:"optionIds,omitempty"`
 	Options            []BTMEnumOption592             `json:"options,omitempty"`
+	// Type of JSON object.
+	BtType *string `json:"btType,omitempty"`
 }
 
 // NewBTMConfigurationParameterEnum105 instantiates a new BTMConfigurationParameterEnum105 object
@@ -498,8 +501,48 @@ func (o *BTMConfigurationParameterEnum105) SetOptions(v []BTMEnumOption592) {
 	o.Options = v
 }
 
+// GetBtType returns the BtType field value if set, zero value otherwise.
+func (o *BTMConfigurationParameterEnum105) GetBtType() string {
+	if o == nil || o.BtType == nil {
+		var ret string
+		return ret
+	}
+	return *o.BtType
+}
+
+// GetBtTypeOk returns a tuple with the BtType field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *BTMConfigurationParameterEnum105) GetBtTypeOk() (*string, bool) {
+	if o == nil || o.BtType == nil {
+		return nil, false
+	}
+	return o.BtType, true
+}
+
+// HasBtType returns a boolean if a field has been set.
+func (o *BTMConfigurationParameterEnum105) HasBtType() bool {
+	if o != nil && o.BtType != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetBtType gets a reference to the given string and assigns it to the BtType field.
+func (o *BTMConfigurationParameterEnum105) SetBtType(v string) {
+	o.BtType = &v
+}
+
 func (o BTMConfigurationParameterEnum105) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
+	serializedBTMConfigurationParameter819, errBTMConfigurationParameter819 := json.Marshal(o.BTMConfigurationParameter819)
+	if errBTMConfigurationParameter819 != nil {
+		return []byte{}, errBTMConfigurationParameter819
+	}
+	errBTMConfigurationParameter819 = json.Unmarshal([]byte(serializedBTMConfigurationParameter819), &toSerialize)
+	if errBTMConfigurationParameter819 != nil {
+		return []byte{}, errBTMConfigurationParameter819
+	}
 	if o.BtType != nil {
 		toSerialize["btType"] = o.BtType
 	}
@@ -541,6 +584,9 @@ func (o BTMConfigurationParameterEnum105) MarshalJSON() ([]byte, error) {
 	}
 	if o.Options != nil {
 		toSerialize["options"] = o.Options
+	}
+	if o.BtType != nil {
+		toSerialize["btType"] = o.BtType
 	}
 	return json.Marshal(toSerialize)
 }

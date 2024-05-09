@@ -16,6 +16,7 @@ import (
 
 // BTArcLengthDimensionDisplayData1018 struct for BTArcLengthDimensionDisplayData1018
 type BTArcLengthDimensionDisplayData1018 struct {
+	BTAngularDimensionDisplayData320
 	BtType               *string         `json:"btType,omitempty"`
 	CoordinateSystem     *BTMatrix3x3340 `json:"coordinateSystem,omitempty"`
 	FeatureId            *string         `json:"featureId,omitempty"`
@@ -41,6 +42,8 @@ type BTArcLengthDimensionDisplayData1018 struct {
 	WitnessMaxPoint1r    *float64        `json:"witnessMaxPoint1r,omitempty"`
 	WitnessMinPoint0r    *float64        `json:"witnessMinPoint0r,omitempty"`
 	WitnessMinPoint1r    *float64        `json:"witnessMinPoint1r,omitempty"`
+	// Type of JSON object.
+	BtType *string `json:"btType,omitempty"`
 }
 
 // NewBTArcLengthDimensionDisplayData1018 instantiates a new BTArcLengthDimensionDisplayData1018 object
@@ -860,8 +863,48 @@ func (o *BTArcLengthDimensionDisplayData1018) SetWitnessMinPoint1r(v float64) {
 	o.WitnessMinPoint1r = &v
 }
 
+// GetBtType returns the BtType field value if set, zero value otherwise.
+func (o *BTArcLengthDimensionDisplayData1018) GetBtType() string {
+	if o == nil || o.BtType == nil {
+		var ret string
+		return ret
+	}
+	return *o.BtType
+}
+
+// GetBtTypeOk returns a tuple with the BtType field value if set, nil otherwise
+// and a boolean to check if the value has been set.
+func (o *BTArcLengthDimensionDisplayData1018) GetBtTypeOk() (*string, bool) {
+	if o == nil || o.BtType == nil {
+		return nil, false
+	}
+	return o.BtType, true
+}
+
+// HasBtType returns a boolean if a field has been set.
+func (o *BTArcLengthDimensionDisplayData1018) HasBtType() bool {
+	if o != nil && o.BtType != nil {
+		return true
+	}
+
+	return false
+}
+
+// SetBtType gets a reference to the given string and assigns it to the BtType field.
+func (o *BTArcLengthDimensionDisplayData1018) SetBtType(v string) {
+	o.BtType = &v
+}
+
 func (o BTArcLengthDimensionDisplayData1018) MarshalJSON() ([]byte, error) {
 	toSerialize := map[string]interface{}{}
+	serializedBTAngularDimensionDisplayData320, errBTAngularDimensionDisplayData320 := json.Marshal(o.BTAngularDimensionDisplayData320)
+	if errBTAngularDimensionDisplayData320 != nil {
+		return []byte{}, errBTAngularDimensionDisplayData320
+	}
+	errBTAngularDimensionDisplayData320 = json.Unmarshal([]byte(serializedBTAngularDimensionDisplayData320), &toSerialize)
+	if errBTAngularDimensionDisplayData320 != nil {
+		return []byte{}, errBTAngularDimensionDisplayData320
+	}
 	if o.BtType != nil {
 		toSerialize["btType"] = o.BtType
 	}
@@ -936,6 +979,9 @@ func (o BTArcLengthDimensionDisplayData1018) MarshalJSON() ([]byte, error) {
 	}
 	if o.WitnessMinPoint1r != nil {
 		toSerialize["witnessMinPoint1r"] = o.WitnessMinPoint1r
+	}
+	if o.BtType != nil {
+		toSerialize["btType"] = o.BtType
 	}
 	return json.Marshal(toSerialize)
 }

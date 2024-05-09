@@ -718,11 +718,7 @@ func (a *BlobElementApiService) UploadFileCreateElementExecute(r ApiUploadFileCr
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	if r.file != nil {
-		paramJson, err := parameterToJson(*r.file)
-		if err != nil {
-			return localVarReturnValue, nil, err
-		}
-		localVarFormParams.Add("file", paramJson)
+		localVarFormParams.Add("file", parameterToString(*r.file, ""))
 	}
 	if r.allowFaultyParts != nil {
 		localVarFormParams.Add("allowFaultyParts", parameterToString(*r.allowFaultyParts, ""))
@@ -1130,11 +1126,7 @@ func (a *BlobElementApiService) UploadFileUpdateElementExecute(r ApiUploadFileUp
 		localVarHeaderParams["Accept"] = localVarHTTPHeaderAccept
 	}
 	if r.file != nil {
-		paramJson, err := parameterToJson(*r.file)
-		if err != nil {
-			return localVarReturnValue, nil, err
-		}
-		localVarFormParams.Add("file", paramJson)
+		localVarFormParams.Add("file", parameterToString(*r.file, ""))
 	}
 	if r.allowFaultyParts != nil {
 		localVarFormParams.Add("allowFaultyParts", parameterToString(*r.allowFaultyParts, ""))
