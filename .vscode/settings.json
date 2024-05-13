@@ -1,21 +1,3 @@
 {
-    "go.inferGopath": false,
-    "go.buildTags": /*"sqlite",*/"onshape",/* ["onshape", "azure_chapter_storage"], ["onshape", "memory_chapter_storage"],["onshape", "file_chapter_storage"],*/
-    "go.testTimeout": "180s",
-    //"go.testFlags": ["-race"], //"-v"],
-    "go.docsTool": "gogetdoc",
-    "go.testEnvVars": {
-        "ONSHAPE_HTTP_DEBUG": "true",
-        "test_onshape_ent_id":"63d3125994d4064540ae2c86",
-        "test_onshape_api_access_key": "uKfKz0inVb51DjFcaGoZHuCS",
-        "test_onshape_api_secret_key": "9eam5gTarqraD5AnBa1iivrJ1edCDfSMjpXQXnC07iMpetRM",
-        "test_atlas_company_id":"04c1de63-3ce2-41f4-93f0-2258b0bd96b7",
-        "test_atlas_company_name":"PTC Creo+ Collaboration Services DEV NPD"
-    },
-    "go.testFlags": ["-race", ],
-    "cSpell.words": [
-        "mux",
-        "r",
-        "vars"
-    ]
+    "java.debug.settings.onBuildFailureProceed": true
 }

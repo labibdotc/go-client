@@ -1,122 +1,37 @@
 {
-    // Use IntelliSense to learn about possible attributes.
-    // Hover to view descriptions of existing attributes.
-    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
     "version": "0.2.0",
     "configurations": [
         {
-            "name": "Debug Onshape",
-            "type": "go",
+            "type": "bashdb",
             "request": "launch",
-            "mode": "exec",
-            "program": "collabsvc-dev",
-            "preLaunchTask": "Build Onshape",
-            "args": [
-                "-unsafeDevOnly",
-                "TrUe"
-            ],
-            "dlvLoadConfig": {
-                "followPointers": true,
-                "maxVariableRecurse": 1,
-                "maxStringLen": 400,
-                "maxArrayValues": 64,
-                "maxStructFields": -1
-            },
-            "env": {
-                "logDir": "./logs/",
-                "chapterStandardExpiryMin": "1",
-                "chapterAgressiveExpiryMin": "1",
-                "chapterCacheExpiryThresholdPercent": "75",
-                "chapterExpiryPollingInterval": "1",
-
-                // "test_atlas_company_name": "Creo Collaboration",
-                // "test_onshape_ent_id": "5edeaceaaaa03012162f677f",
-                // "test_atlas_company_id": "960f25b8-ea2c-47b6-a7af-e3ab53b9f266",
-                // "test_onshape_api_access_key": "",
-                // "test_onshape_api_secret_key": "",
-                // "ONSHAPE_BASE_URL": "https://creocollab.dev.onshape.com",
-
-                
-                "test_atlas_company_name": "PTC Creo+ Collaboration Services DEV NPD",
-                "test_onshape_ent_id": "63d3125994d4064540ae2c86",
-                "test_atlas_company_id": "04c1de63-3ce2-41f4-93f0-2258b0bd96b7",
-                "test_onshape_api_access_key": "uKfKz0inVb51DjFcaGoZHuCS",
-                "test_onshape_api_secret_key": "9eam5gTarqraD5AnBa1iivrJ1edCDfSMjpXQXnC07iMpetRM",
-                // "ONSHAPE_BASE_URL": "https://demo-c.dev.onshape.com/",
-                "ONSHAPE_BASE_URL": "https://demo-c.dev.onshape.com",
-            } //
+            "name": "Bash-Debug 3.gen",
+            "program": "${workspaceFolder}/3.gen",
+            "args": []
         },
         {
-            "name": "Debug Smoke",
-            "type": "go",
+
+            "type": "java",
+            "name": "Debug (Launch)-OpenAPIGenerator",
             "request": "launch",
-            "mode": "exec",
-            "program": "smoke-dev",
-            "preLaunchTask": "Build Smoke",
+            "mainClass": "org.openapitools.codegen.OpenAPIGenerator",
             "args": [
+                "generate",
+                "-i", "${workspaceFolder}/openapi.json.tmp",
+                "-g", "go-oapi-codegen",
+                "-o", "${workspaceFolder}/onshape",
+                "--type-mappings", "DateTime=JSONTime",
+                "--additional-properties", "packageVersion=${packageVersion}",
+                "--additional-properties", "useOneOfDiscriminatorLookup=true",
+                "--api-name-suffix", "Api",
+                "--global-property", "apiTests=false",
+                "-c", "${workspaceFolder}/openapi_config.json"
             ],
-            "dlvLoadConfig": {
-                "followPointers": true,
-                "maxVariableRecurse": 1,
-                "maxStringLen": 400,
-                "maxArrayValues": 64,
-                "maxStructFields": -1
-            },
-            "env": {
-                "logDir": "./logs/",
-                "chapterStandardExpiryMin": "1",
-                "chapterAgressiveExpiryMin": "1",
-                "chapterCacheExpiryThresholdPercent": "75",
-                "chapterExpiryPollingInterval": "1",
-
-                // "test_atlas_company_name": "Creo Collaboration",
-                // "test_onshape_ent_id": "5edeaceaaaa03012162f677f",
-                // "test_atlas_company_id": "960f25b8-ea2c-47b6-a7af-e3ab53b9f266",
-                // "test_onshape_api_access_key": "",
-                // "test_onshape_api_secret_key": "",
-                // "ONSHAPE_BASE_URL": "https://creocollab.dev.onshape.com",
-
-                
-                "test_atlas_company_name": "PTC Creo+ Collaboration Services DEV NPD",
-                "test_onshape_ent_id": "63d3125994d4064540ae2c86",
-                "test_atlas_company_id": "04c1de63-3ce2-41f4-93f0-2258b0bd96b7",
-                "test_onshape_api_access_key": "uKfKz0inVb51DjFcaGoZHuCS",
-                "test_onshape_api_secret_key": "9eam5gTarqraD5AnBa1iivrJ1edCDfSMjpXQXnC07iMpetRM",
-                // "ONSHAPE_BASE_URL": "https://demo-c.dev.onshape.com/",
-                "ONSHAPE_BASE_URL": "https://demo-c.dev.onshape.com",
-            } //
-        },
-        {
-            "name": "Debug SQLite",
-            "type": "go",
-            "request": "launch",
-            "mode": "exec",
-            "program": "collabsvc-sqlite-dev",
-            "preLaunchTask": "Build SQLite",
-            "args": [
-                "-unsafeDevOnly",
-                "TrUe"
+            // "projectName": "go-oapi-codegen",
+            "classPaths": [
+                "${workspaceFolder}/go-oapi-codegen.jar",
+                "${workspaceFolder}/openapi-generator-cli.jar"
             ],
-            "env": {
-                "logDir": "./logs/",
-                "chapterStandardExpiryMin": "1",
-                "chapterAgressiveExpiryMin": "1",
-                "chapterCacheExpiryThresholdPercent": "75",
-                "chapterExpiryPollingInterval": "1",
-                "serverPort": "8001",
-                "test_atlas_company_name": "Creo Collaboration",
-                "test_onshape_ent_id": "5edeaceaaaa03012162f677f",
-                "test_atlas_company_id": "960f25b8-ea2c-47b6-a7af-e3ab53b9f266",
-            },
-            "dlvLoadConfig": {
-                "followPointers": true,
-                "maxVariableRecurse": 1,
-                "maxStringLen": 400,
-                "maxArrayValues": 64,
-                "maxStructFields": -1
-            },
-            
-
+            "preLaunchTask": "combinedTask",
         }
     ]
 }

@@ -1,0 +1,62 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+
+        {
+            "label": "getGo-oapi-codegen",
+            "type": "shell",
+            "command": "cp -r ${workspaceFolder}/../openapi-utilities/go-oapi-codegen .",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        },
+        {
+            "label": "preJavaGen",
+            "type": "shell",
+            "command": "if [ -z \"$packageVersion\" ]; then\n    packageVersion=0.0.0\nfi",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        },
+        {
+            "label": "getGen",
+            "type": "shell",
+            "command": "${workspaceFolder}/getGen",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        },
+        {
+            "label": "1.pre",
+            "type": "shell",
+            "command": "${workspaceFolder}/1.pre",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        },
+        {
+            "label": "2.del",
+            "type": "shell",
+            "command": "${workspaceFolder}/2.del",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        },
+        {
+            "label": "combinedTask",
+            "dependsOn": ["getGen",  "preJavaGen"],
+            "type": "shell",
+            "command": "echo 'Combined task'",
+            "dependsOrder": "sequence",
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            }
+        },
+    ]
+}
