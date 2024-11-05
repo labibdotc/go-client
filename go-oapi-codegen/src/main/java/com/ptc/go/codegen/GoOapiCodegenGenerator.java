@@ -191,7 +191,7 @@ public class GoOapiCodegenGenerator extends org.openapitools.codegen.languages.G
     InlineModelFlattener inlineModelResolver = new InlineModelFlattener();
     inlineModelResolver.setInlineSchemaNameMapping(inlineSchemaNameMapping());
     inlineModelResolver.setInlineSchemaOptions(new HashMap<>());
-    inlineModelResolver.flatten(openAPI); //TODO: bring back
+    // inlineModelResolver.flatten(openAPI); //TODO: bring back
 
     for(Map.Entry<String, Schema> x : openAPI.getComponents().getSchemas().entrySet()) {
       Schema model = x.getValue();
