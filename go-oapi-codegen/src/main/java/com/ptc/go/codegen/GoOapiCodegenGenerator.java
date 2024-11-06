@@ -1,5 +1,5 @@
-
 package com.ptc.go.codegen;
+
 import org.apache.commons.lang3.StringUtils;
 import org.openapitools.codegen.*;
 import org.openapitools.codegen.model.*;
@@ -11,12 +11,8 @@ import io.swagger.v3.oas.models.media.*;
 import io.swagger.v3.oas.models.parameters.*;
 import io.swagger.v3.parser.util.*;
 
-import java.lang.reflect.Parameter;
 import java.util.*;
 import java.util.stream.*;
-
-import org.openapitools.codegen.InlineModelResolver;
-
 
 public class GoOapiCodegenGenerator extends org.openapitools.codegen.languages.GoClientCodegen {
   private static final Logger LOGGER = LoggerFactory.getLogger(GoOapiCodegenGenerator.class);
@@ -67,7 +63,6 @@ public class GoOapiCodegenGenerator extends org.openapitools.codegen.languages.G
 
   @Override
   public ModelsMap postProcessModels(ModelsMap objs) {
-    LoggerFactory.getLogger(GoOapiCodegenGenerator.class).info("postProcessModels - objs `{}`", objs);
     ensureVarsAreInAllVars(objs);
     resolveParameterNamingConflicts(objs);
     addUnconstrainedDiscriminatorInheritance(objs);
@@ -119,10 +114,7 @@ public class GoOapiCodegenGenerator extends org.openapitools.codegen.languages.G
   }
 
   protected void resolveParameterNamingConflicts(ModelsMap objs) {
-    List<ModelMap> models = objs.getModels();
-    LOGGER.info("resolveParameterNamingConflicts - models= {}",  models);
-
-    for (ModelMap m : models) {
+    for (ModelMap m : objs.getModels()) {
         CodegenModel model = m.getModel();
         for (CodegenProperty param : model.allVars) {
             class Local<T> {
@@ -190,8 +182,7 @@ public class GoOapiCodegenGenerator extends org.openapitools.codegen.languages.G
   public void processOpenAPI(OpenAPI openAPI) {
     InlineModelFlattener inlineModelResolver = new InlineModelFlattener();
     inlineModelResolver.setInlineSchemaNameMapping(inlineSchemaNameMapping());
-    // inlineModelResolver.setInlineSchemaOptions(new HashMap<>());
-    inlineModelResolver.flatten(openAPI); //TODO: bring back
+    inlineModelResolver.flatten(openAPI);
 
     for(Map.Entry<String, Schema> x : openAPI.getComponents().getSchemas().entrySet()) {
       Schema model = x.getValue();
@@ -224,7 +215,7 @@ public class GoOapiCodegenGenerator extends org.openapitools.codegen.languages.G
     return false;
   }
 
-
+  @Override
   protected String getParameterDataType(Parameter parameter, Schema schema) {
     Schema unaliasSchema = unaliasSchema(schema, Collections.emptyMap());
     if (unaliasSchema.get$ref() != null) {
