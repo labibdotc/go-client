@@ -7,21 +7,21 @@ import (
 )
 
 func TestSketchAPI(t *testing.T) {
-    InitializeTester[*onshape.SketchApiService](t)
+	InitializeTester[*onshape.SketchApiService](t)
 
-    OpenAPITest{
-        Call: onshape.ApiGetSketchInfoRequest{},
-        Expect: Todo(),
-    }.Execute()
-    
-    OpenAPITest{
-        Call: onshape.ApiGetSketchBoundingBoxesRequest{},
-        Expect: Todo(),
-    }.Execute()
-    
-    OpenAPITest{
-        Call: onshape.ApiGetTessellatedEntitiesRequest{},
-        Expect: Todo(),
-    }.Execute()
-    
+	OpenAPITest{
+		Call:   onshape.ApiGetSketchInfoRequest{},
+		Expect: Todo(),
+	}.Execute()
+
+	OpenAPITest{
+		Call:   onshape.ApiGetSketchBoundingBoxesRequest{},
+		Expect: Todo(),
+	}.Execute()
+
+	OpenAPITest{
+		Call:   onshape.ApiGetTessellatedEntitiesRequest{},
+		Expect: Todo(),
+	}.Execute()
+
 }

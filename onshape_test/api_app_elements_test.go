@@ -118,7 +118,7 @@ func TestCreateAndGetAppElement(t *testing.T) {
 			//Path.path element
 			pathKey := onshape.NewBTJPathKey3221()
 			pathKey.SetBtType("BTJPathKey-3221")
-			pathKey.BTJPathElement2297 = *onshape.NewBTJPathElement2297()	
+			pathKey.BTJPathElement2297 = *onshape.NewBTJPathElement2297()
 			pathKey.SetKey("chapterProperties")
 			path.SetPath([]onshape.BTJPathElement2297{*pathKey.AsBTJPathElement2297()})
 			btjEditInsert.SetPath(*path)
@@ -127,7 +127,7 @@ func TestCreateAndGetAppElement(t *testing.T) {
 				"chp1":    "v1",
 				"chp2":    "v2",
 			}
-			btjEditInsert.SetValue(value)
+			btjEditInsert.SetValue(onshape.BTGetJsonResponse2137Tree{AdditionalProperties: value})
 			bTAppElementUpdateParams.SetJsonTreeEdit(*btjEditInsert.AsBTJEdit3734())
 			client.AppElementApi.UpdateAppElement(ctx, did, eid, "w", wid).BTAppElementUpdateParams(*bTAppElementUpdateParams).Execute()
 

@@ -7,11 +7,11 @@ import (
 )
 
 func TestMetadataCategoryAPI(t *testing.T) {
-    InitializeTester[*onshape.MetadataCategoryApiService](t)
+	InitializeTester[*onshape.MetadataCategoryApiService](t)
 
-    OpenAPITest{
-        Call: onshape.ApiGetCategoryPropertiesRequest{},
-        Expect: Todo(),
-    }.Execute()
-    
+	OpenAPITest{
+		Call:   onshape.ApiGetCategoryPropertiesRequest{},
+		Expect: Todo(),
+	}.Execute()
+
 }

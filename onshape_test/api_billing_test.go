@@ -7,11 +7,11 @@ import (
 )
 
 func TestBillingAPI(t *testing.T) {
-    InitializeTester[*onshape.BillingApiService](t)
+	InitializeTester[*onshape.BillingApiService](t)
 
-    OpenAPITest{
-        Call: onshape.ApiGetClientPlansRequest{},
-        Expect: Todo(),
-    }.Execute()
-    
+	OpenAPITest{
+		Call:   onshape.ApiGetClientPlansRequest{},
+		Expect: Todo(),
+	}.Execute()
+
 }

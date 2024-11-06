@@ -7,16 +7,16 @@ import (
 )
 
 func TestOpenApiAPI(t *testing.T) {
-    InitializeTester[*onshape.OpenApiApiService](t)
+	InitializeTester[*onshape.OpenApiApiService](t)
 
-    OpenAPITest{
-        Call: onshape.ApiGetOpenApiRequest{},
-        Expect: Todo(),
-    }.Execute()
-    
-    OpenAPITest{
-        Call: onshape.ApiGetTagsRequest{},
-        Expect: Todo(),
-    }.Execute()
-    
+	OpenAPITest{
+		Call:   onshape.ApiGetOpenApiRequest{},
+		Expect: Todo(),
+	}.Execute()
+
+	OpenAPITest{
+		Call:   onshape.ApiGetTagsRequest{},
+		Expect: Todo(),
+	}.Execute()
+
 }

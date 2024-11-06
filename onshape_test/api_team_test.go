@@ -7,21 +7,21 @@ import (
 )
 
 func TestTeamAPI(t *testing.T) {
-    InitializeTester[*onshape.TeamApiService](t)
+	InitializeTester[*onshape.TeamApiService](t)
 
-    OpenAPITest{
-        Call: onshape.ApiFindRequest{},
-        Expect: Todo(),
-    }.Execute()
-    
-    OpenAPITest{
-        Call: onshape.ApiGetTeamRequest{},
-        Expect: Todo(),
-    }.Execute()
-    
-    OpenAPITest{
-        Call: onshape.ApiGetMembersRequest{},
-        Expect: Todo(),
-    }.Execute()
-    
+	OpenAPITest{
+		Call:   onshape.ApiFindRequest{},
+		Expect: Todo(),
+	}.Execute()
+
+	OpenAPITest{
+		Call:   onshape.ApiGetTeamRequest{},
+		Expect: Todo(),
+	}.Execute()
+
+	OpenAPITest{
+		Call:   onshape.ApiGetMembersRequest{},
+		Expect: Todo(),
+	}.Execute()
+
 }

@@ -7,26 +7,26 @@ import (
 )
 
 func TestAccountAPI(t *testing.T) {
-    InitializeTester[*onshape.AccountApiService](t)
+	InitializeTester[*onshape.AccountApiService](t)
 
-    OpenAPITest{
-        Call: onshape.ApiGetPlanPurchasesRequest{},
-        Expect: Todo(),
-    }.Execute()
-    
-    OpenAPITest{
-        Call: onshape.ApiGetPurchasesRequest{},
-        Expect: Todo(),
-    }.Execute()
-    
-    OpenAPITest{
-        Call: onshape.ApiConsumePurchaseRequest{},
-        Expect: Todo(),
-    }.Execute()
-    
-    OpenAPITest{
-        Call: onshape.ApiCancelPurchaseNewRequest{},
-        Expect: Todo(),
-    }.Execute()
-    
+	OpenAPITest{
+		Call:   onshape.ApiGetPlanPurchasesRequest{},
+		Expect: Todo(),
+	}.Execute()
+
+	OpenAPITest{
+		Call:   onshape.ApiGetPurchasesRequest{},
+		Expect: Todo(),
+	}.Execute()
+
+	OpenAPITest{
+		Call:   onshape.ApiConsumePurchaseRequest{},
+		Expect: Todo(),
+	}.Execute()
+
+	OpenAPITest{
+		Call:   onshape.ApiCancelPurchaseNewRequest{},
+		Expect: Todo(),
+	}.Execute()
+
 }

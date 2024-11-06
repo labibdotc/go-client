@@ -7,11 +7,11 @@ import (
 )
 
 func TestExportRuleAPI(t *testing.T) {
-    InitializeTester[*onshape.ExportRuleApiService](t)
+	InitializeTester[*onshape.ExportRuleApiService](t)
 
-    OpenAPITest{
-        Call: onshape.ApiGetValidRuleOptionsRequest{},
-        Expect: Todo(),
-    }.Execute()
-    
+	OpenAPITest{
+		Call:   onshape.ApiGetValidRuleOptionsRequest{},
+		Expect: Todo(),
+	}.Execute()
+
 }

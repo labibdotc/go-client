@@ -7,31 +7,31 @@ import (
 )
 
 func TestBlobElementAPI(t *testing.T) {
-    InitializeTester[*onshape.BlobElementApiService](t)
+	InitializeTester[*onshape.BlobElementApiService](t)
 
-    OpenAPITest{
-        Call: onshape.ApiUploadFileCreateElementRequest{},
-        Expect: Todo(),
-    }.Execute()
-    
-    OpenAPITest{
-        Call: onshape.ApiDownloadFileWorkspaceRequest{},
-        Expect: Todo(),
-    }.Execute()
-    
-    OpenAPITest{
-        Call: onshape.ApiUploadFileUpdateElementRequest{},
-        Expect: Todo(),
-    }.Execute()
-    
-    OpenAPITest{
-        Call: onshape.ApiUpdateUnitsRequest{},
-        Expect: Todo(),
-    }.Execute()
-    
-    OpenAPITest{
-        Call: onshape.ApiCreateBlobTranslationRequest{},
-        Expect: Todo(),
-    }.Execute()
-    
+	OpenAPITest{
+		Call:   onshape.ApiUploadFileCreateElementRequest{},
+		Expect: Todo(),
+	}.Execute()
+
+	OpenAPITest{
+		Call:   onshape.ApiDownloadFileWorkspaceRequest{},
+		Expect: Todo(),
+	}.Execute()
+
+	OpenAPITest{
+		Call:   onshape.ApiUploadFileUpdateElementRequest{},
+		Expect: Todo(),
+	}.Execute()
+
+	OpenAPITest{
+		Call:   onshape.ApiUpdateUnitsRequest{},
+		Expect: Todo(),
+	}.Execute()
+
+	OpenAPITest{
+		Call:   onshape.ApiCreateBlobTranslationRequest{},
+		Expect: Todo(),
+	}.Execute()
+
 }

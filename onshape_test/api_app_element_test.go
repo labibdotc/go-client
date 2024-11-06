@@ -100,9 +100,9 @@ func TestAppElementAPI(t *testing.T) {
 			}
 
 			insert := Context()["bTAppElementUpdateParams"].(*onshape.BTAppElementUpdateParams).JsonTreeEdit.GetActualInstance().(*onshape.BTJEditInsert2523)
-			nm[insert.Path.GetPath()[0].GetActualInstance().(*onshape.BTJPathKey3221).GetKey()] = insert.GetValue()
-
-			require.EqualValues(t, r.GetTree().AdditionalProperties, nm)
+			nm[insert.Path.GetPath()[0].GetActualInstance().(*onshape.BTJPathKey3221).GetKey()] = insert.GetValue().AdditionalProperties
+			add := r.GetTree().AdditionalProperties
+			require.EqualValues(t, add, nm)
 		}),
 	}.Execute()
 
@@ -264,7 +264,7 @@ func GetDefaultAppUpdateParams() *onshape.BTAppElementUpdateParams {
 		"chp1":    "v1",
 		"chp2":    "v2",
 	}
-	btjEditInsert.SetValue(value)
+	btjEditInsert.SetValue(onshape.BTGetJsonResponse2137Tree{AdditionalProperties: value})
 	bTAppElementUpdateParams.SetJsonTreeEdit(*btjEditInsert.AsBTJEdit3734())
 
 	return bTAppElementUpdateParams

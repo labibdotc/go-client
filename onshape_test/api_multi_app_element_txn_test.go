@@ -108,7 +108,7 @@ func TestTxnWorkflow(t *testing.T) {
 				"chp2":    tt.args.subElements[1].name,
 				"chp3":    tt.args.subElements[2].name,
 			}
-			btjEditInsert.SetValue(value)
+			btjEditInsert.SetValue(onshape.BTGetJsonResponse2137Tree{AdditionalProperties: value})
 			bTAppElementUpdateParams.SetJsonTreeEdit(*btjEditInsert.AsBTJEdit3734())
 			bTAppElementUpdateParams.SetTransactionId(*txnID)
 			client.AppElementApi.UpdateAppElement(ctx, did, eid, "w", wid).BTAppElementUpdateParams(*bTAppElementUpdateParams).Execute()

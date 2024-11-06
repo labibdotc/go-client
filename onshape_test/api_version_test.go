@@ -7,11 +7,11 @@ import (
 )
 
 func TestVersionAPI(t *testing.T) {
-    InitializeTester[*onshape.VersionApiService](t)
+	InitializeTester[*onshape.VersionApiService](t)
 
-    OpenAPITest{
-        Call: onshape.ApiGetAllVersionsRequest{},
-        Expect: Todo(),
-    }.Execute()
-    
+	OpenAPITest{
+		Call:   onshape.ApiGetAllVersionsRequest{},
+		Expect: Todo(),
+	}.Execute()
+
 }

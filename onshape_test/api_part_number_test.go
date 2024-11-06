@@ -7,11 +7,11 @@ import (
 )
 
 func TestPartNumberAPI(t *testing.T) {
-    InitializeTester[*onshape.NumberingSchemeApiService](t)
+	InitializeTester[*onshape.NumberingSchemeApiService](t)
 
-    OpenAPITest{
-        Call: onshape.ApiNextNumbersRequest{},
-        Expect: Todo(),
-    }.Execute()
-    
+	OpenAPITest{
+		Call:   onshape.ApiNextNumbersRequest{},
+		Expect: Todo(),
+	}.Execute()
+
 }

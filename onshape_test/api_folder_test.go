@@ -7,21 +7,21 @@ import (
 )
 
 func TestFolderAPI(t *testing.T) {
-    InitializeTester[*onshape.FolderApiService](t)
+	InitializeTester[*onshape.FolderApiService](t)
 
-    OpenAPITest{
-        Call: onshape.ApiGetFolderAclRequest{},
-        Expect: Todo(),
-    }.Execute()
-    
-    OpenAPITest{
-        Call: onshape.ApiShareRequest{},
-        Expect: Todo(),
-    }.Execute()
-    
-    OpenAPITest{
-        Call: onshape.ApiUnShareRequest{},
-        Expect: Todo(),
-    }.Execute()
-    
+	OpenAPITest{
+		Call:   onshape.ApiGetFolderAclRequest{},
+		Expect: Todo(),
+	}.Execute()
+
+	OpenAPITest{
+		Call:   onshape.ApiShareRequest{},
+		Expect: Todo(),
+	}.Execute()
+
+	OpenAPITest{
+		Call:   onshape.ApiUnShareRequest{},
+		Expect: Todo(),
+	}.Execute()
+
 }
