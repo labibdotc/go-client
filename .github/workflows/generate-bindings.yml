@@ -10,7 +10,7 @@ on:
 
 jobs:
   generate:
-    uses: onshape-public/openapi-utilities/.github/workflows/generate-bindings.yml@main
+    uses: labibdotc/openapi-utilities/.github/workflows/generate-bindings.yml@java-upgrade-revert
     secrets:
       BOT_ACCESS_TOKEN: ${{ secrets.GH_PAT }}
       ONSHAPE_API_ACCESS_KEY: ${{ secrets.ONSHAPE_API_KEY_DEMO_C }}
